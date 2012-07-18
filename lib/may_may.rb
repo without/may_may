@@ -59,12 +59,12 @@ module MayMay
       def may(action_name, options, &block)
         May.controller(self.name.gsub(/Controller$/, '').tableize.to_sym) { May.may action_name, options, &block }
       end
-    end
 
-    def self.setup(klass)
-      klass.extend ClassMethods
-      klass.before_filter :may_may_setup
-      klass.helper_method :may?
+      def setup_may_may
+        include(MayMayACExtensions)
+        before_filter :may_may_setup
+        helper_method :may?
+      end
     end
 
     def access_denied
@@ -93,8 +93,6 @@ module MayMay
     end
   end
 
-  class ActionController::Base
-    include MayMayACExtensions
-    MayMayACExtensions.setup(self)
-  end
+  ActionController::Base.extend(MayMayACExtensions::ClassMethods)
+  ActionController::Base.setup_may_may
 end

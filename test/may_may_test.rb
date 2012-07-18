@@ -7,8 +7,8 @@ class Roles
   def self.helper_method(*params)
   end
 
-  include MayMay::MayMayACExtensions
-  MayMay::MayMayACExtensions.setup(self)
+  extend MayMay::MayMayACExtensions::ClassMethods
+  setup_may_may
 
   attr_accessor :current_roles
 
