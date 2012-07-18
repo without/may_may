@@ -1,3 +1,5 @@
+require 'action_controller/base'
+
 module MayMay
   class ::May
     def self.permissions_setup(&block)
