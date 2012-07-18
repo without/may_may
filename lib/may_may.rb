@@ -61,6 +61,7 @@ module MayMay
       end
 
       def setup_may_may
+        p "setup_may_may"
         include(MayMayACExtensions)
         before_filter :may_may_setup
         helper_method :may?
@@ -93,6 +94,6 @@ module MayMay
     end
   end
 
-  ActionController::Base.extend(MayMayACExtensions::ClassMethods)
-  ActionController::Base.setup_may_may
+  ::ActionController::Base.extend(MayMayACExtensions::ClassMethods)
+  ::ActionController::Base.setup_may_may
 end
