@@ -4,8 +4,4 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.send((params[:user] || 'guest').to_sym)
   end
-
-  def current_roles
-    current_user.role_names
-  end
 end

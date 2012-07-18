@@ -82,5 +82,9 @@ module MayMay
   class ActionController::Base
     include MayMayACExtensions
     MayMayACExtensions.setup(self)
+
+    def current_roles
+      (respond_to?(:current_user) && current_user.respond_to?(:role_names)) ? current_user.role_names : []
+    end
   end
 end
