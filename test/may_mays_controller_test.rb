@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MayMayControllerTest < ActionController::TestCase
+class MayMaysControllerTest < ActionController::TestCase
   test "all may index" do
     get :index, user: :guest
     assert_response :success
@@ -40,5 +40,15 @@ class MayMayControllerTest < ActionController::TestCase
 
   test "admin may destroy" do
     delete :destroy, :id => 1, user: :admin
+  end
+
+  test "guest may not create" do
+    post :create, user: :guest
+    assert_response 403
+  end
+
+  test "admin may create" do
+    post :create, user: :admin
+    assert_response :success
   end
 end

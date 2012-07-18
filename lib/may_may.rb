@@ -12,6 +12,8 @@ module MayMay
             has_role?(contr, only_roles)
           elsif except_roles = options[:except]
             !has_role?(contr, except_roles)
+          elsif method = options[:method]
+            contr.send(method)
           elsif permission_block
             has_block_permission?(contr, &permission_block)
           else
@@ -48,12 +50,19 @@ module MayMay
     end
 
     def self.has_block_permission?(contr, &block)
-      block.call(contr)
+      contr.instance_eval(&block)
     end
   end
 
   module MayMayACExtensions
+    module ClassMethods
+      def may(action_name, options, &block)
+        May.controller(self.name.gsub(/Controller$/, '').tableize.to_sym) { May.may action_name, options, &block }
+      end
+    end
+
     def self.setup(klass)
+      klass.extend ClassMethods
       klass.before_filter :may_may_setup
       klass.helper_method :may?
     end
@@ -64,27 +73,28 @@ module MayMay
     end
 
     def current_roles
-      []
+      (respond_to?(:current_user) && current_user.respond_to?(:role_names)) ? current_user.role_names : []
     end
 
     def may?(action_name, controller_name, &block)
       May.permission_to?(action_name, controller_name, self, &block)
     end
 
+
+    def has_role?(role)
+      May.has_role?(self, role)
+    end
+
     private
 
     def may_may_setup
       May.permissions_setup
-      access_denied unless May.permission_to? params[:action], params[:controller], self
+      access_denied unless May.permission_to? params[:action], params[:controller].to_s.pluralize.to_sym, self
     end
   end
 
   class ActionController::Base
     include MayMayACExtensions
     MayMayACExtensions.setup(self)
-
-    def current_roles
-      (respond_to?(:current_user) && current_user.respond_to?(:role_names)) ? current_user.role_names : []
-    end
   end
 end
