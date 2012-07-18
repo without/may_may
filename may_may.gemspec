@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Rails Controller action permission management"
   s.description = "Manage controller/action permissions easily in Rails. Returns 403 (Access Denied) unless current user has permission to perform the requested controller action. Easy syntax for use in views to check permission: may?(:action, :controller). Source at https://github.com/without/may_may.git"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", ">= 3.2.2"
