@@ -71,3 +71,7 @@ Here is a simple example setup:
 The important thing is to return an array of roles that can be matched against the roles specified in
 your May model. Your array may contain whatever types you'd like -- strings, symbols, models. Symbols
 are probably most readable, however, hence the example above.
+
+## Licence
+
+MIT-LICENSE

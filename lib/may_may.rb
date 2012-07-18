@@ -13,7 +13,7 @@ module MayMay
           elsif except_roles = options[:except]
             !has_role?(contr, except_roles)
           elsif permission_block
-            has_block_permission?(&permission_block)
+            has_block_permission?(contr, &permission_block)
           else
             true # may :index # action permitted without exceptions
           end
@@ -47,8 +47,8 @@ module MayMay
       @controller = old_controller
     end
 
-    def self.has_block_permission?(&block)
-      block.call
+    def self.has_block_permission?(contr, &block)
+      block.call(contr)
     end
   end
 

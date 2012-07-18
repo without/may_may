@@ -1,17 +1,17 @@
 class MayMayController < ApplicationController
-  def current_roles
-    r = if p_roles = params[:roles]
-      p_roles.map {|role| role.to_sym }
-    else
-      []
-    end
-    return r
+  def index
+    render text: 'index'
   end
 
-  def index
-    render :layout => false, :inline => %{<% may?(:edit, :may_may) do -%>
-  Edit link
-<% end -%>
-}
+  def new
+    render layout: false
+  end
+
+  def show
+    render text: 'show'
+  end
+
+  def destroy
+    render text: 'destroy'
   end
 end

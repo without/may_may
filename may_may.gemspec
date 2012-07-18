@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["james@withoutsoftware.com"]
   s.homepage    = "http://withoutsoftware.com"
   s.summary     = "Rails Controller action permission management"
-  s.description = "Manage controller/action permissions easily in Rails. Returns 403 (Access Denied) unless current user has permission to perform the requested controller action. Easy syntax for use in views to check permission: may?(:action, :controller)"
+  s.description = "Manage controller/action permissions easily in Rails. Returns 403 (Access Denied) unless current user has permission to perform the requested controller action. Easy syntax for use in views to check permission: may?(:action, :controller). Source at https://github.com/without/may_may.git"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
