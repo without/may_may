@@ -79,10 +79,8 @@ module MayMay
     end
   end
 
-  module ::ActionController
-    class Base
-      include MayMayACExtensions
-      MayMayACExtensions.setup(self)
-    end
+  class ActionController::Base
+    include MayMayACExtensions
+    MayMayACExtensions.setup(self)
   end
 end
