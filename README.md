@@ -32,6 +32,7 @@ Simplify your views. Show/hide view elements based on intended action instead of
           may :edit, :except => [:guest] # everyone except guests may edit a person
           may [:new, :update] do
             # return true to allow these actions
+            # block executed in controller's scope
           end
         end # :destroy was never mentioned and so is not permitted for anyone
       end
@@ -71,6 +72,13 @@ Here is a simple example setup:
 The important thing is to return an array of roles that can be matched against the roles specified in
 your May model. Your array may contain whatever types you'd like -- strings, symbols, models. Symbols
 are probably most readable, however, hence the example above.
+
+You could instead define permissions within the controller itself:
+
+    class UsersController
+      may :index, only: [:some, :roles]
+      may :show, method: [:may_show?]
+    end
 
 ## Licence
 
