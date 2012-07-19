@@ -1,9 +1,5 @@
 module MayMay
   class ::May
-    def self.permissions_setup(&block)
-      instance_eval(&block) if block
-    end
-
     def self.may(actions, options = {}, &permission_block)
       actions = [actions] unless actions.respond_to? :each
       actions.each do |action|
