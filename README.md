@@ -19,7 +19,6 @@ Simplify your views. Show/hide view elements based on intended action instead of
       <%= link_to 'only visible if user may edit people', edit_people_path %>
     <% end %>
 
-### 
 ### Create a model named "may":
 
     # in app/models/may.rb
@@ -38,7 +37,7 @@ Simplify your views. Show/hide view elements based on intended action instead of
       end
     end
 
-### Add a current_roles method to your ApplicationController:
+### Add a role_names method to your User object
 
 Here is a simple example setup:
 
@@ -59,13 +58,22 @@ Here is a simple example setup:
     class User
       has_many :user_roles
       has_many :roles, through: :user_roles
+
+      def role_names
+        roles.map {|role| role.name.to_sym }
+      end
     end
 
     # in app/controllers/application_controller.rb
 
     class ApplicationController < ActionController::Base
-      def current_roles
-        current_user.roles.map {|role| role.name.to_sym }
+      def current_user
+        @current_user ||= User.find(session[:user_id]) rescue nil
+      end
+
+      def current_user=(value)
+        value ? session[:user_id] = value.id : session.delete(:id)
+        @current_user = value
       end
     end
 
@@ -79,6 +87,36 @@ You could instead define permissions within the controller itself:
       may :index, only: [:some, :roles]
       may :show, method: [:may_show?]
     end
+
+## In more depth
+
+MayMay adds a few methods to ActionController::Base:
+
+*** `may` (class method)  
+
+Define permissions in your controller instead of May model. Shortcut for `May.may(self, ...)`  
+
+Usage:
+
+    class SomeController < ApplicationController
+      may :index, except: [:this_role]
+    end
+
+*** `current_roles`  
+
+Returns `current_user.role_names` or empty array if `current_user` returns nil or is missing
+
+*** `has_role?`  
+
+Check `current_roles` for a specific role.  
+
+Usage: if `has_role? :some_role`
+
+*** may? (helper method)  
+
+Check for permission to perform an action.  
+
+Usage: if `may? :action_name, :controller_name`
 
 ## Licence
 
