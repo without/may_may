@@ -65,7 +65,31 @@ module MayMay
 
     def access_denied
       response.status = 403
-      render :text => 'Access Denied'
+      if Rails.env == 'development'
+        render_text = "Permission denied to action :#{params[:action]} on controller :#{params[:controller]}"
+        if May.respond_to? get_permission_method
+          render text: render_text
+        else
+          render_text = '<h1>' + render_text + '</h1>' + %{
+            <p>Controller action permission needs to be specified in your May model. Example:</p>
+
+            <pre>
+            # in app/models/may.rb:
+
+            class May
+              controller: :#{params[:controller]} do
+                may :#{params[:action]}, only: [:role_1, :role_2]
+              end
+            end
+            </pre>
+
+            <p>For more detailed information, view the <a href="https://github.com/without/may_may/blob/master/README.md">MayMay gem's README.md</a></p>
+          }
+          render layout: false, inline: render_text
+        end
+      else
+        render text: "Access Denied."
+      end
     end
 
     def current_roles
@@ -83,9 +107,13 @@ module MayMay
 
     private
 
+    def get_permission_method
+      May.get_permission_method params[:action], params[:controller].to_s.pluralize.to_sym
+    end
+
     def may_may_setup
-      May.permissions_setup
-      access_denied unless May.permission_to? params[:action], params[:controller].to_s.pluralize.to_sym, self
+      method = get_permission_method
+      access_denied unless May.respond_to?(method) && May.send(get_permission_method, self)
     end
   end
 
