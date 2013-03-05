@@ -24,7 +24,7 @@ class MayMaysControllerTest < ActionController::TestCase
 
   test "admin may not show" do
     get :show, :id => 1, user: :admin
-    assert_response 403
+    assert_response 401
   end
 
   test "new includes edit link for admin only" do
@@ -35,7 +35,7 @@ class MayMaysControllerTest < ActionController::TestCase
 
   test "standard cannot destroy" do
     delete :destroy, :id => 1, user: :standard
-    assert_response 403
+    assert_response 401
   end
 
   test "admin may destroy" do
@@ -44,7 +44,7 @@ class MayMaysControllerTest < ActionController::TestCase
 
   test "guest may not create" do
     post :create, user: :guest
-    assert_response 403
+    assert_response 401
   end
 
   test "admin may create" do
