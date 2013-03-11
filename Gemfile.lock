@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    may_may (0.0.3)
+    may_may (0.0.4)
       rails (>= 3.2.2)
 
 GEM
