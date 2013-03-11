@@ -30,7 +30,8 @@ module MayMay
 
     def self.setup(klass)
       klass.extend(MayMayACExtensions::ClassMethods)
-      klass.helper_method :may?, :has_role?
+      klass.helper_method :may?
+      klass.helper_method :has_role?
     end
 
     def access_denied
