@@ -4,17 +4,10 @@ module MayMay
       actions = [actions] unless actions.respond_to? :each
       actions.each do |action|
         define_singleton_method(get_permission_method(action, @controller)) do |contr, &block|
-          allowed = if only_roles = options[:only]
-            has_role?(contr, only_roles)
-          elsif except_roles = options[:except]
-            !has_role?(contr, except_roles)
-          elsif method = options[:method]
-            contr.send(method)
-          elsif permission_block
-            has_block_permission?(contr, &permission_block)
-          else
-            true # may :index # action permitted without exceptions
-          end
+          allowed = (only_roles = options[:only]) ? has_role?(contr, only_roles) : true
+          allowed &&= (except_roles = options[:except]) ? !has_role?(contr, except_roles) : true
+          allowed &&= (method = options[:method]) ? contr.send(method) : true
+          allowed &&= permission_block ? has_block_permission?(contr, &permission_block) : true
           block.call if allowed && block
           allowed
         end

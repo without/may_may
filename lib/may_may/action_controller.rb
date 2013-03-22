@@ -15,7 +15,7 @@ module MayMay
         end
       end
 
-      def may(action_name, options, &block)
+      def may(action_name, options = {}, &block)
         May.controller(fix_controller_name(name)) { May.may action_name, options, &block }
       end
 
