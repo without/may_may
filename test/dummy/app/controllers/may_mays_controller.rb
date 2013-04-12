@@ -1,5 +1,6 @@
 class MayMaysController < ApplicationController
   may :create, method: :can_create?
+  may :extra, only: :admin, method: :current_user
 
   def index
     render text: 'index'
@@ -23,5 +24,9 @@ class MayMaysController < ApplicationController
 
   def can_create?
     current_user.name == 'admin'
+  end
+
+  def extra
+    render text: 'extra!'
   end
 end

@@ -51,4 +51,14 @@ class MayMaysControllerTest < ActionController::TestCase
     post :create, user: :admin
     assert_response :success
   end
+
+  test "admin may get extra" do
+    get :extra, :id => 1, :user => :admin
+    assert_response :success
+  end
+
+  test "standard may not get extra" do
+    get :extra, :id => 1, :user => :standard
+    assert_response 401
+  end
 end
