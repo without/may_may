@@ -1,6 +1,6 @@
 class MayMaysController < ApplicationController
   may :create, method: :can_create?
-  may :extra, only: :admin, method: :current_user
+  may :extra, only: [:stanard, :admin], method: :current_user
 
   def index
     render text: 'index'
