@@ -9,7 +9,6 @@ module MayMay
           control_access if only.include? controller_name
         end
         if except
-          Rails.logger.debug "except: #{except}"
           except = [except] unless except.respond_to? :include?
           control_access unless except.include? controller_name
         end
@@ -68,7 +67,7 @@ module MayMay
     end
 
     def may?(action_name, controller_name, &block)
-      May.permission_to?(action_name, controller_name, self, &block)
+      May.permission_to?(action_name, fix_controller_name(controller_name.to_s), self, &block)
     end
 
 
@@ -78,13 +77,17 @@ module MayMay
 
     private
 
+    def fix_controller_name(controller_name)
+      controller_name.gsub(/Controller$/, '').tableize
+    end
+
     def get_permission_method
-      May.get_permission_method params[:action], params[:controller].to_s.pluralize.to_sym
+      May.get_permission_method params[:action], fix_controller_name(self.class.name)
     end
 
     def may_may_setup
       method = get_permission_method
-      access_denied unless May.respond_to?(method) && May.send(get_permission_method, self)
+      access_denied unless May.respond_to?(method) && May.send(method, self)
     end
   end
 
