@@ -21,7 +21,7 @@ module MayMay
 
     def self.has_role?(contr, roles)
       roles = [roles] unless roles.respond_to? :include?
-      contr.current_roles.each {|role| return true if roles.include?(role) }
+      contr.current_roles.each { |role| return true if roles.include?(role) }
       false
     end
 

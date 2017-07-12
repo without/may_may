@@ -1,11 +1,9 @@
 require 'test_helper'
 
 class Roles
-  def self.before_filter(*params)
-  end
+  def self.before_filter(*_params); end
 
-  def self.helper_method(*params)
-  end
+  def self.helper_method(*_params); end
 
   include MayMay::MayMayACExtensions
   MayMay::MayMayACExtensions.setup(self)
@@ -19,66 +17,66 @@ class Roles
 end
 
 class MayMayTest < ActiveSupport::TestCase
-  test "access_denied if not specifically permitted" do
+  test 'access_denied if not specifically permitted' do
     assert !May.permission_to?(:test_1_action, :people, Roles.new)
   end
 
-  test "access allowed for anyone if named but no roles specified" do
+  test 'access allowed for anyone if named but no roles specified' do
     May.controller(:people) { May.may :test_2_action }
     assert May.permission_to?(:test_2_action, :people, Roles.new)
   end
 
-  test "access allowed for specified role only" do
-    May.controller(:people) { May.may :test_3_action, :only => :a_role }
+  test 'access allowed for specified role only' do
+    May.controller(:people) { May.may :test_3_action, only: :a_role }
     with_correct_role = May.permission_to?(:test_3_action, :people, Roles.new(:a_role))
     without_correct_role = May.permission_to?(:test_3_action, :people, Roles.new(:b_role))
     assert_equal [true, false], [with_correct_role, without_correct_role]
   end
 
-  test "access allowed for specified roles" do
-    May.controller(:people) { May.may :test_4_action, :only => [:a_role1, :a_role2] }
+  test 'access allowed for specified roles' do
+    May.controller(:people) { May.may :test_4_action, only: %i[a_role1 a_role2] }
     with_first_role = May.permission_to?(:test_4_action, :people, Roles.new(:a_role1))
     with_second_role = May.permission_to?(:test_4_action, :people, Roles.new(:a_role2))
-    with_both_roles = May.permission_to?(:test_4_action, :people, Roles.new([:a_role1, :a_role2]))
+    with_both_roles = May.permission_to?(:test_4_action, :people, Roles.new(%i[a_role1 a_role2]))
     with_neither_role = May.permission_to?(:test_4_action, :people, Roles.new(:b_role))
     assert_equal [true, true, true, false], [with_first_role, with_second_role, with_both_roles, with_neither_role]
   end
 
-  test "access denied for specified roles" do
-    May.controller(:people) { May.may :test_5_action, :except => [:a_role1, :a_role2] }
+  test 'access denied for specified roles' do
+    May.controller(:people) { May.may :test_5_action, except: %i[a_role1 a_role2] }
     with_first_role = May.permission_to?(:test_5_action, :people, Roles.new(:a_role1))
     with_second_role = May.permission_to?(:test_5_action, :people, Roles.new(:a_role2))
-    with_both_roles = May.permission_to?(:test_5_action, :people, Roles.new([:a_role1, :a_role2]))
+    with_both_roles = May.permission_to?(:test_5_action, :people, Roles.new(%i[a_role1 a_role2]))
     with_neither_role = May.permission_to?(:test_5_action, :people, Roles.new(:b_role))
     assert_equal [false, false, false, true], [with_first_role, with_second_role, with_both_roles, with_neither_role]
   end
 
-  test "access denied by block" do
-    May.controller(:people) { May.may(:test_6_action) {|controller| false } }
+  test 'access denied by block' do
+    May.controller(:people) { May.may(:test_6_action) { |_controller| false } }
     assert !May.permission_to?(:test_6_action, :people, Roles.new)
   end
 
-  test "access allowed by block" do
-    May.controller(:people) { May.may(:test_7_action) {|controller| true } }
+  test 'access allowed by block' do
+    May.controller(:people) { May.may(:test_7_action) { |_controller| true } }
     assert May.permission_to?(:test_7_action, :people, Roles.new)
   end
 
-  test "controller may method works" do
-    May.controller(:people) { May.may(:test_8_action, :only => [:a_role]) }
+  test 'controller may method works' do
+    May.controller(:people) { May.may(:test_8_action, only: [:a_role]) }
     with_role = Roles.new(:a_role).may?(:test_8_action, :people)
     without_role = Roles.new.may?(:test_8_action, :people)
     assert_equal [true, false], [with_role, without_role]
   end
 
-  test "controller may method with block" do
-    May.controller(:people) { May.may(:test_9_action, :only => [:a_role]) }
+  test 'controller may method with block' do
+    May.controller(:people) { May.may(:test_9_action, only: [:a_role]) }
     with_role = false
     Roles.new(:a_role).may?(:test_9_action, :people) { with_role = 'allowed!' }
     without_role = Roles.new.may?(:test_9_action, :people) { without_role = 'not allowed!' }
     assert_equal ['allowed!', false], [with_role, without_role]
   end
 
-  test "controller may with permission block" do
+  test 'controller may with permission block' do
     can = true
     May.controller(:people) { May.may(:test_10_action) { can } }
     should = false

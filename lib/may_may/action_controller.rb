@@ -38,9 +38,9 @@ module MayMay
       if Rails.env == 'development'
         render_text = "Permission denied to action :#{params[:action]} on controller :#{params[:controller]}"
         if May.respond_to? get_permission_method
-          render text: render_text
+          render plain: render_text
         else
-          render_text = '<h1>' + render_text + '</h1>' + %{
+          render_text = '<h1>' + render_text + '</h1>' + %(
             <p>Controller action permission needs to be specified in your May model. Example:</p>
 
             <pre>
@@ -54,22 +54,21 @@ module MayMay
             </pre>
 
             <p>For more detailed information, view the <a href="https://github.com/without/may_may/blob/master/README.md">MayMay gem's README.md</a></p>
-          }
+          )
           render layout: false, inline: render_text
         end
       else
-        render text: "Access Denied."
+        render plain: 'Access Denied.'
       end
     end
 
     def current_roles
-      (respond_to?(:current_user) && current_user.respond_to?(:role_names)) ? current_user.role_names : []
+      respond_to?(:current_user) && current_user.respond_to?(:role_names) ? current_user.role_names : []
     end
 
     def may?(action_name, controller_name, &block)
       May.permission_to?(action_name, fix_controller_name(controller_name.to_s), self, &block)
     end
-
 
     def has_role?(role)
       May.has_role?(self, role)

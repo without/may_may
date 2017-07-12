@@ -1,9 +1,9 @@
 class MayMaysController < ApplicationController
   may :create, method: :can_create?
-  may :extra, only: [:stanard, :admin], method: :current_user
+  may :extra, only: %i[stanard admin], method: :current_user
 
   def index
-    render text: 'index'
+    render plain: 'index'
   end
 
   def new
@@ -11,15 +11,15 @@ class MayMaysController < ApplicationController
   end
 
   def show
-    render text: 'show'
+    render plain: 'show'
   end
 
   def destroy
-    render text: 'destroy'
+    render plain: 'destroy'
   end
 
   def create
-    render text: 'create'
+    render plain: 'create'
   end
 
   def can_create?
@@ -27,6 +27,6 @@ class MayMaysController < ApplicationController
   end
 
   def extra
-    render text: 'extra!'
+    render plain: 'extra!'
   end
 end
