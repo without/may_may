@@ -59,26 +59,26 @@ Metrics/LineLength:
 
 # Offense count: 3
 # Cop supports --auto-correct.
-Rails/ApplicationRecord:
-  Exclude:
-    - 'app/models/role.rb'
-    - 'app/models/user.rb'
-    - 'app/models/user_role.rb'
+# Rails/ApplicationRecord:
+#   Exclude:
+#     - 'app/models/role.rb'
+#     - 'app/models/user.rb'
+#     - 'app/models/user_role.rb'
 
 # Offense count: 1
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
-Rails/HasManyOrHasOneDependent:
-  Exclude:
-    - 'app/models/user.rb'
+# Rails/HasManyOrHasOneDependent:
+#   Exclude:
+#     - 'app/models/user.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
-Rails/ReadWriteAttribute:
-  Exclude:
-    - 'app/models/role.rb'
+# Rails/ReadWriteAttribute:
+#   Exclude:
+#     - 'app/models/role.rb'
 
 # Offense count: 11
 Style/Documentation:
