@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   attr_accessible :name, :roles
 
   has_many :user_roles
