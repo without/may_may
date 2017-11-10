@@ -1,5 +1,5 @@
 class Role < ApplicationRecord
-  attr_accessible :name
+  attr_accessor :name
 
   belongs_to :user_role
 

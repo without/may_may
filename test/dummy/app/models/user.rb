@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessible :name, :roles
+  attr_accessor :name, :roles
 
   has_many :user_roles
   has_many :roles, through: :user_roles
