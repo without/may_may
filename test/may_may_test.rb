@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Roles
-  def self.before_filter(*params)
+  def self.before_action(*params)
   end
 
   def self.helper_method(*params)

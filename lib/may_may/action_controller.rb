@@ -23,7 +23,7 @@ module MayMay
       end
 
       def control_access
-        before_filter :may_may_setup
+        before_action :may_may_setup
       end
     end
 
