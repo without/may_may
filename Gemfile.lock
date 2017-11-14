@@ -2,8 +2,6 @@ PATH
   remote: .
   specs:
     may_may (0.0.4)
-      jquery-rails
-      rails (~> 5.1.4)
 
 GEM
   remote: http://rubygems.org/
@@ -137,6 +135,7 @@ DEPENDENCIES
   listen
   may_may!
   minitest-reporters
+  rails (~> 5.1.4)
   sqlite3
 
 BUNDLED WITH
