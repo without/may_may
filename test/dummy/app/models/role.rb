@@ -4,7 +4,7 @@ class Role < ApplicationRecord
   belongs_to :user_role
 
   def name
-    nm = self[:name]
+    nm = read_attribute(:name)
     nm ? nm.to_sym : nil
   end
 
