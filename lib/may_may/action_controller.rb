@@ -38,7 +38,7 @@ module MayMay
       if Rails.env == 'development'
         render_text = "Permission denied to action :#{params[:action]} on controller :#{params[:controller]}"
         if May.respond_to? get_permission_method
-          render text: render_text
+          render plain: render_text
         else
           render_text = '<h1>' + render_text + '</h1>' + %{
             <p>Controller action permission needs to be specified in your May model. Example:</p>
@@ -58,7 +58,7 @@ module MayMay
           render layout: false, inline: render_text
         end
       else
-        render text: "Access Denied."
+        render plain: "Access Denied."
       end
     end
 

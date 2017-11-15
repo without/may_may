@@ -5,6 +5,8 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
 require "awesome_print"
 require 'minitest/reporters'
+require 'minitest/focus'
+
 require 'pry-remote'
 
 Rails.backtrace_cleaner.remove_silencers!

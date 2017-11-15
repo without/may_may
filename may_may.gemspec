@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-bundler'
   s.add_development_dependency 'guard-minitest'
   s.add_development_dependency 'guard-rubocop'
-  s.add_development_dependency "jquery-rails"
+  s.add_runtime_dependency "jquery-rails"
   s.add_development_dependency 'listen'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'minitest-focus'
