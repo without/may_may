@@ -5,7 +5,7 @@ group :red_green_refactor, halt_on_fail: true do
     watch(%r{^test/(.*)\/?test_(.*)\.rb$})
     watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |m| "test/#{m[1]}test_#{m[2]}.rb" }
     watch(%r{^test/test_helper\.rb$})      { 'test' }
-    watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |_m| "test/mvi_billing_test.rb" }
+    watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |_m| 'test/mvi_billing_test.rb' }
 
     callback(:start_begin) { `#{ENV['EDITOR']} .` }
 
@@ -19,7 +19,7 @@ group :red_green_refactor, halt_on_fail: true do
     watch(%r{^app/helpers/(.*)\.rb$}) { |m| "test/helpers/#{m[1]}_test.rb" }
   end
 
-  guard :rubocop, all_on_start: true, cli: ['--format', 'clang', '-D', '-E'] do
+  guard :rubocop, all_on_start: true, cli: ['--format', 'clang', '-D', '-E', '-a'] do
     # guard :rubocop, cli: ["--format", "clang", "--rails", "-D", "-E", "-a"] do
     watch('Gemfile')
     watch(/.+\.rb$/)

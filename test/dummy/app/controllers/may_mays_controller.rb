@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MayMaysController < ApplicationController
   may :create, method: :can_create?
   may :extra, only: [:stanard, :admin], method: :current_user

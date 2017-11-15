@@ -7,12 +7,9 @@ require "awesome_print"
 require 'minitest/reporters'
 require 'pry-remote'
 
-
-
 Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
-
 
 Minitest::Reporters.use!([Minitest::Reporters::DefaultReporter.new(colot: true), Minitest::Reporters::SpecReporter.new], ENV, Minitest.backtrace_filter)
