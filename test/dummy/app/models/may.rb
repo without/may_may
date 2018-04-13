@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class May
   controller :may_mays do
     may :index

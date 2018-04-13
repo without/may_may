@@ -1,22 +1,24 @@
-class Role < ActiveRecord::Base
-  attr_accessible :name
+# frozen_string_literal: true
+
+class Role < ApplicationRecord
+  class << Role
+    def admin
+      Role.new(ActionController::Parameters.new(name: :admin))
+    end
+
+    def standard
+      Role.new(ActionController::Parameters.new(name: :standard))
+    end
+
+    def guest
+      Role.new(ActionController::Parameters.new(name: :guest))
+    end
+  end
 
   belongs_to :user_role
 
   def name
     nm = read_attribute(:name)
     nm ? nm.to_sym : nil
-  end
-
-  def self.admin
-    new(name: :admin)
-  end
-
-  def self.standard
-    new(name: :standard)
-  end
-
-  def self.guest
-    new(name: :guest)
   end
 end
