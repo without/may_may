@@ -1,7 +1,0 @@
-inherit_from: '.rubocop_todo.yml'
-
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
-
-Rails/ApplicationRecord:
-  Enabled: false
