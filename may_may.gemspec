@@ -15,11 +15,5 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
-  s.add_runtime_dependency 'rake'
-  s.add_dependency "sqlite3"
-  s.add_runtime_dependency "jquery-rails"
-  s.add_development_dependency 'listen'
-  s.add_development_dependency 'minitest'
   s.add_development_dependency "rails", '~> 5.1.4'
-  s.add_development_dependency 'pry-remote'
 end
