@@ -1,0 +1,92 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+Application	test/dummy/config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Dummy	inherits:Rails.Application
+ApplicationController	test/dummy/app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c	inherits:ActionController.Base
+ApplicationHelper	test/dummy/app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ApplicationRecord	test/dummy/app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c	inherits:ActiveRecord.Base
+ClassMethods	lib/may_may/action_controller.rb	/^    module ClassMethods$/;"	m	class:MayMay.MayMayACExtensions
+CreateRoles	test/dummy/db/migrate/20120718155853_create_roles.rb	/^class CreateRoles < ActiveRecord::Migration[5.1]$/;"	c	inherits:ActiveRecord.Migration
+CreateUserRoles	test/dummy/db/migrate/20120718160138_create_user_roles.rb	/^class CreateUserRoles < ActiveRecord::Migration[5.1]$/;"	c	inherits:ActiveRecord.Migration
+CreateUsers	test/dummy/db/migrate/20120718160104_create_users.rb	/^class CreateUsers < ActiveRecord::Migration[5.1]$/;"	c	inherits:ActiveRecord.Migration
+Dummy	test/dummy/config/application.rb	/^module Dummy$/;"	m
+May	lib/may_may/may.rb	/^  class ::May$/;"	c	class:MayMay
+May	test/dummy/app/models/may.rb	/^class May$/;"	c
+MayMay	lib/may_may/action_controller.rb	/^module MayMay$/;"	m
+MayMay	lib/may_may/may.rb	/^module MayMay$/;"	m
+MayMay	lib/may_may/version.rb	/^module MayMay$/;"	m
+MayMayACExtensions	lib/may_may/action_controller.rb	/^  module MayMayACExtensions$/;"	m	class:MayMay
+MayMayTest	test/may_may_test.rb	/^class MayMayTest < ActiveSupport::TestCase$/;"	c	inherits:ActiveSupport.TestCase
+MayMaysController	test/dummy/app/controllers/may_mays_controller.rb	/^class MayMaysController < ApplicationController$/;"	c	inherits:ApplicationController
+MayMaysControllerTest	test/may_mays_controller_test.rb	/^class MayMaysControllerTest < ActionController::TestCase$/;"	c	inherits:ActionController.TestCase
+Role	test/dummy/app/models/role.rb	/^class Role < ApplicationRecord$/;"	c	inherits:ApplicationRecord
+RoleTest	test/role_test.rb	/^class RoleTest < ActiveSupport::TestCase$/;"	c	inherits:ActiveSupport.TestCase
+Roles	test/may_may_test.rb	/^class Roles$/;"	c
+User	test/dummy/app/models/user.rb	/^class User < ApplicationRecord$/;"	c	inherits:ApplicationRecord
+UserRole	test/dummy/app/models/user_role.rb	/^class UserRole < ApplicationRecord$/;"	c	inherits:ApplicationRecord
+UserTest	test/user_test.rb	/^class UserTest < ActiveSupport::TestCase$/;"	c	inherits:ActiveSupport.TestCase
+VERSION	lib/may_may/version.rb	/^  VERSION = "0.0.4"$/;"	C	class:MayMay
+access_denied	lib/may_may/action_controller.rb	/^    def access_denied$/;"	f	class:MayMay.MayMayACExtensions
+admin	test/dummy/app/models/role.rb	/^    def admin$/;"	F	class:Role.Role
+admin	test/dummy/app/models/user.rb	/^    def admin$/;"	F	class:User.User
+before_action	test/may_may_test.rb	/^  def self.before_action(*params)$/;"	F	class:Roles
+build_role	test/dummy/app/models/user_role.rb	/^  belongs_to :role$/;"	F	class:UserRole
+build_user	test/dummy/app/models/user_role.rb	/^  belongs_to :user$/;"	F	class:UserRole
+build_user_role	test/dummy/app/models/role.rb	/^  belongs_to :user_role$/;"	F	class:Role
+can_create?	test/dummy/app/controllers/may_mays_controller.rb	/^  def can_create?$/;"	f	class:MayMaysController
+change	test/dummy/db/migrate/20120718155853_create_roles.rb	/^  def change$/;"	f	class:CreateRoles
+change	test/dummy/db/migrate/20120718160104_create_users.rb	/^  def change$/;"	f	class:CreateUsers
+change	test/dummy/db/migrate/20120718160138_create_user_roles.rb	/^  def change$/;"	f	class:CreateUserRoles
+control_access	lib/may_may/action_controller.rb	/^      def control_access$/;"	f	class:MayMay.MayMayACExtensions.ClassMethods
+controller	lib/may_may/may.rb	/^    def self.controller(contr)$/;"	F	class:MayMay.May
+create	test/dummy/app/controllers/may_mays_controller.rb	/^  def create$/;"	f	class:MayMaysController
+create_role	test/dummy/app/models/user_role.rb	/^  belongs_to :role$/;"	F	class:UserRole
+create_role!	test/dummy/app/models/user_role.rb	/^  belongs_to :role$/;"	F	class:UserRole
+create_user	test/dummy/app/models/user_role.rb	/^  belongs_to :user$/;"	F	class:UserRole
+create_user!	test/dummy/app/models/user_role.rb	/^  belongs_to :user$/;"	F	class:UserRole
+create_user_role	test/dummy/app/models/role.rb	/^  belongs_to :user_role$/;"	F	class:Role
+create_user_role!	test/dummy/app/models/role.rb	/^  belongs_to :user_role$/;"	F	class:Role
+current_roles	lib/may_may/action_controller.rb	/^    def current_roles$/;"	f	class:MayMay.MayMayACExtensions
+current_roles	test/may_may_test.rb	/^  attr_accessor :current_roles$/;"	f	class:Roles
+current_roles=	test/may_may_test.rb	/^  attr_accessor :current_roles$/;"	f	class:Roles
+current_user	test/dummy/app/controllers/application_controller.rb	/^  def current_user$/;"	f	class:ApplicationController
+destroy	test/dummy/app/controllers/may_mays_controller.rb	/^  def destroy$/;"	f	class:MayMaysController
+extra	test/dummy/app/controllers/may_mays_controller.rb	/^  def extra$/;"	f	class:MayMaysController
+fix_controller_name	lib/may_may/action_controller.rb	/^      def fix_controller_name(controller_name)$/;"	f	class:MayMay.MayMayACExtensions.ClassMethods
+fix_controller_name	lib/may_may/action_controller.rb	/^    def fix_controller_name(controller_name)$/;"	f	class:MayMay.MayMayACExtensions
+get_permission_method	lib/may_may/action_controller.rb	/^    def get_permission_method$/;"	f	class:MayMay.MayMayACExtensions
+get_permission_method	lib/may_may/may.rb	/^    def self.get_permission_method(action_name, controller_name)$/;"	F	class:MayMay.May
+guest	test/dummy/app/models/role.rb	/^    def guest$/;"	F	class:Role.Role
+guest	test/dummy/app/models/user.rb	/^    def guest$/;"	F	class:User.User
+has_block_permission?	lib/may_may/may.rb	/^    def self.has_block_permission?(contr, &block)$/;"	F	class:MayMay.May
+has_role?	lib/may_may/action_controller.rb	/^    def has_role?(role)$/;"	f	class:MayMay.MayMayACExtensions
+has_role?	lib/may_may/may.rb	/^    def self.has_role?(contr, roles)$/;"	F	class:MayMay.May
+helper_method	test/may_may_test.rb	/^  def self.helper_method(*params)$/;"	F	class:Roles
+index	test/dummy/app/controllers/may_mays_controller.rb	/^  def index$/;"	f	class:MayMaysController
+initialize	test/may_may_test.rb	/^  def initialize(roles = [])$/;"	f	class:Roles
+may	lib/may_may/action_controller.rb	/^      def may(action_name, options = {}, &block)$/;"	f	class:MayMay.MayMayACExtensions.ClassMethods
+may	lib/may_may/may.rb	/^    def self.may(actions, options = {}, &permission_block)$/;"	F	class:MayMay.May
+may?	lib/may_may/action_controller.rb	/^    def may?(action_name, controller_name, &block)$/;"	f	class:MayMay.MayMayACExtensions
+may_control_access	lib/may_may/action_controller.rb	/^      def may_control_access(params = {})$/;"	f	class:MayMay.MayMayACExtensions.ClassMethods
+may_may_setup	lib/may_may/action_controller.rb	/^    def may_may_setup$/;"	f	class:MayMay.MayMayACExtensions
+name	test/dummy/app/models/role.rb	/^  def name$/;"	f	class:Role
+new	test/dummy/app/controllers/may_mays_controller.rb	/^  def new$/;"	f	class:MayMaysController
+permission_to?	lib/may_may/may.rb	/^    def self.permission_to?(action_name, controller_name, contr, &block)$/;"	F	class:MayMay.May
+role	test/dummy/app/models/user_role.rb	/^  belongs_to :role$/;"	F	class:UserRole
+role=	test/dummy/app/models/user_role.rb	/^  belongs_to :role$/;"	F	class:UserRole
+role_ids	test/dummy/app/models/user.rb	/^  has_many :roles, through: :user_roles$/;"	F	class:User
+role_ids=	test/dummy/app/models/user.rb	/^  has_many :roles, through: :user_roles$/;"	F	class:User
+role_names	test/dummy/app/models/user.rb	/^  def role_names$/;"	f	class:User
+roles	test/dummy/app/models/user.rb	/^  has_many :roles, through: :user_roles$/;"	F	class:User
+roles=	test/dummy/app/models/user.rb	/^  has_many :roles, through: :user_roles$/;"	F	class:User
+setup	lib/may_may/action_controller.rb	/^    def self.setup(klass)$/;"	F	class:MayMay.MayMayACExtensions
+show	test/dummy/app/controllers/may_mays_controller.rb	/^  def show$/;"	f	class:MayMaysController
+standard	test/dummy/app/models/role.rb	/^    def standard$/;"	F	class:Role.Role
+standard	test/dummy/app/models/user.rb	/^    def standard$/;"	F	class:User.User
+user	test/dummy/app/models/user_role.rb	/^  belongs_to :user$/;"	F	class:UserRole
+user=	test/dummy/app/models/user_role.rb	/^  belongs_to :user$/;"	F	class:UserRole
+user_role	test/dummy/app/models/role.rb	/^  belongs_to :user_role$/;"	F	class:Role
+user_role=	test/dummy/app/models/role.rb	/^  belongs_to :user_role$/;"	F	class:Role
+user_role_ids	test/dummy/app/models/user.rb	/^  has_many :user_roles$/;"	F	class:User
+user_role_ids=	test/dummy/app/models/user.rb	/^  has_many :user_roles$/;"	F	class:User
+user_roles	test/dummy/app/models/user.rb	/^  has_many :user_roles$/;"	F	class:User
+user_roles=	test/dummy/app/models/user.rb	/^  has_many :user_roles$/;"	F	class:User
